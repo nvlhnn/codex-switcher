@@ -61,7 +61,7 @@ function Invoke-CodexAccount {
             $temporary = Join-Path $codexDir 'auth.json.switching'
             try {
                 Copy-Item -LiteralPath $source -Destination $temporary -Force
-                [System.IO.File]::Move($temporary, $authFile, $true)
+                Move-Item -LiteralPath $temporary -Destination $authFile -Force
             }
             finally {
                 if (Test-Path -LiteralPath $temporary) {
